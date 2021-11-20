@@ -25,13 +25,14 @@ class product{
     static allProducts = async (req, res) => {
         try {
             const products = await productModel.find();
-
+            const productNames = await productModel.find().select('_id')
+            console.log(productNames)
             res.send({ apistatus: true, data: products, message: "data feched success" })
         } catch (e) {
             res.send({ apistatus: false, message: "data feched false" })
         }
     }
-    static editporduct = async (req, res) => {
+    static editproduct = async (req, res) => {
         try {
             let product = await productModel.findOne({ _id: req.params.id })
             if(!product) throw new Error("product not found")
