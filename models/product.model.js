@@ -1,15 +1,18 @@
 const mongoose = require("mongoose")
 
 const productSchema = new mongoose.Schema({
+    _id:{type: mongoose.ObjectId,
+        select: false
+    },
     name: {
         required: true,
         type: String,
-        trim: true
+        trim: true,
     },
      code: {
         unique:true,
         required: true,
-        type: Number,
+         type: Number,
     },
     season: {
         type: String,
