@@ -1,0 +1,49 @@
+<!-- <section class="container my-4">
+    <form [formGroup]="LoginForm" (ngSubmit)="handleLogin()">
+        <div class="alert alert-danger my-3" *ngIf="invalidData">
+            invalid Data
+        </div>
+            <div class="mb-3">       
+                <input placeholder="Enter your Email address" class="form-control" formControlName="email"
+                (input)="invalidData=false">
+                <div class="my-3 alert alert-danger" *ngIf="email?.invalid && (isSubmitted || email?.dirty || email?.touched )">
+                    <p *ngIf="email?.errors?.required">* Email is required </p>
+                    <p *ngIf="email?.errors?.email">* Email is required </p>
+                </div>
+        </div>
+        <div class="mb-3">
+                <input placeholder="Enter your password" class="form-control" formControlName="password" (input)="invalidData=false">
+                <div class="my-3 alert alert-danger" *ngIf="password?.invalid && (isSubmitted || password?.dirty || password?.touched )">
+                    <p *ngIf="password?.errors?.required">* Password is required </p>
+                </div>
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary">Login</button>
+        </div>
+    </form>
+</section> -->
+
+<section class="container my-4">
+    <form [formGroup]="LoginForm" (ngSubmit)="handelLogin()" >
+
+        <div class="mb-3">
+            <input placeholder="Enter your Email" class="form-control" formControlName="email">
+            <div class="my-3 alert alert-danger" *ngIf="email?.invalid && (email?.touched || isSubmited )">
+                <p >*Invalid Email </p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input placeholder="Enter your password" class="form-control" formControlName="password" >
+            <div class="my-3 alert alert-danger" *ngIf="password?.invalid && (password?.dirty || isSubmited )" >
+                <p>* Password is required </p>
+            </div>
+        </div>
+        <div class="alert alert-danger my-3" *ngIf="invalidData">
+            {{invalidData}}
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary">Login</button>
+        </div>
+
+    </form>
+</section>

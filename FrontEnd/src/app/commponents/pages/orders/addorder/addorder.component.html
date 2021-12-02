@@ -1,0 +1,90 @@
+<app-adminnav></app-adminnav>
+<section class="container my-4">
+    <form [formGroup]="myForm" (ngSubmit)="confirmData()">
+        <select class="form-select mb-3" aria-label="Default select example" formControlName="customerId">
+            <option selected>Choose Customer Phone ...</option>
+            <option *ngFor="let cu of allcustomer" [ngValue]="cu._id">{{cu.phones[0].phone}}</option>
+        </select>
+
+        <div class="mb-3">
+            <input class="form-control" placeholder="code" formControlName="code">
+            <div class="alert alert-danger" *ngIf='code?.invalid && (code?.touched || isSubmitted )'>
+                error {{code?.errors | json}}
+            </div>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" placeholder="request_date" formControlName="request_date">
+            <div class="alert alert-danger" *ngIf='request_date?.invalid && (request_date?.touched || isSubmitted )'>
+                error {{request_date?.errors | json}}
+            </div>
+        </div>
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" formControlName="from">
+                <option selected>Choose from ...</option>
+                <option value="Facebook" >Facebook</option>
+                <option value="Instagram">Instagram</option>
+                <option value="whatsApp" >whatsApp</option>
+                <option value="Facebook Adds">Facebook Adds</option>
+                <!-- ['Instagram', 'Facebook', 'whatsApp', 'Facebook Adds'] -->
+            </select>
+
+            <div class="alert alert-danger" *ngIf='from?.invalid && (from?.touched || isSubmitted )'>
+                error {{from?.errors | json}}
+            </div>
+        </div>
+        <div formArrayName='products'>
+            <div *ngFor="let product of products.controls; index as i">
+                <div [formGroupName]='i'>
+                    <select class="form-select mb-3" aria-label="Default select example"
+                     formControlName="productname" [(ngModel)]="prodColors">
+                        <option selected>Choose Product ...</option>
+                        <option *ngFor="let p of allproducts" [ngValue]="p.colors">
+                            <!-- <input class="form-control " value="{{p.name}}" formControlName="productname" > -->
+                            {{p.name}}
+                        </option>  
+                    </select>
+                    
+                    <select class="form-select mb-3" aria-label="Default select example"
+                     formControlName="productId" [(ngModel)]="prodCoId">
+                        <option selected>Choose Color ...</option>
+                        <option *ngFor="let c of prodColors"  [ngValue]="c._id">
+                            {{c.color}}</option>
+                    </select>
+
+                    <select class="form-select mb-3" aria-label="Default select example" formControlName="size">
+                        <option selected>Choose Size ...</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <!-- ['S', 'M', 'L', 'XL', 'XXL', 'XXXl'] -->
+                    </select>
+
+                    
+                    <select class=" mb-3 form-select" aria-label="Default select example" formControlName="status">
+                        <option value="Inprogress">Inprogress</option>
+                        <option value="Done">Done</option>
+                        <option value="Recall">Recall</option>
+                        <option value="Cancel">Cancel</option>
+                        <!-- status: { enum: ['Done', 'Recall', 'Cancel', 'Inprogress'], type: String, default: 'Inprogress' }, -->
+                    </select>
+                    
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="quantity" formControlName="quantity">
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary m-3" (click)="addFormGroup()">Add Product</button>
+            <button type="button" class="btn btn-primary m-3" (click)="removeFormGroup()">Remove Product</button>
+        </div>
+
+        <div class="mb-3">
+            <input class="form-control" placeholder="notes" formControlName="notes">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+</section>
+
+<!-- <option *ngFor="let p of allproducts" value="{{p._id}}">{{p.name}}</option> -->

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+.main-bg {
+  background-color: hsl(272deg 52% 36%);
+}
+
+.main-color {
+  color: hsl(272deg 52% 36%);
+}
+
+.second-bg {
+  background-color: hsl(333deg 85% 52%);
+}
+
+.second-color {
+  color: hsl(333deg 85% 52%);
+}
+/* hsl(333deg 85% 52%) */
+/* hsl(272deg 52% 36%) */

@@ -1,0 +1,73 @@
+
+
+<app-adminnav></app-adminnav>
+<section class="container my-4">
+    <form [formGroup]="myForm" (ngSubmit)="confirmData()">
+        <div class="mb-3">
+            <input class="form-control" placeholder="name" formControlName="name">
+            <div class="alert alert-danger" *ngIf='name?.invalid && (name?.touched || isSubmitted )'>
+                error {{name?.errors | json}}
+            </div>
+        </div>
+        <div formArrayName='phones'>
+            <div *ngFor="let phone of phones.controls; index as i">
+                <div [formGroupName]='i'>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="phone" formControlName="phone">
+                        <div class="alert alert-danger" *ngIf='phone1?.invalid && (phone1?.touched || isSubmitted )'>
+                            error {{phone1?.errors | json}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div formGroupName='address'>
+            <div class="mb-3">
+                <input class="form-control" placeholder="city" formControlName="city">
+                <div class="alert alert-danger" *ngIf='city?.invalid && (city?.touched || isSubmitted )'>
+                    error {{city?.errors | json}}
+                </div>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" placeholder="area" formControlName="area">
+                <div class="alert alert-danger" *ngIf='area?.invalid && (area?.touched || isSubmitted )'>
+                    error {{area?.errors | json}}
+                </div>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" placeholder="details" formControlName="details">
+                <div class="alert alert-danger" *ngIf='details?.invalid && (details?.touched || isSubmitted )'>
+                    error {{details?.errors | json}}
+                </div>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input type="number" class="form-control" placeholder="rate" formControlName="rate">
+            <div class="alert alert-danger" *ngIf='rate?.invalid && (rate?.touched || isSubmitted )'>
+                error {{rate?.errors | json}}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</section>
+
+<!-- <div class="mb-3">
+            <input class="form-control" placeholder="code" formControlName="code">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" placeholder="season" formControlName="season">
+        </div>
+        <div formArrayName='colors'>
+            <div *ngFor="let colorData of colors.controls; index as i">
+                <div [formGroupName]='i'>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="color" formControlName="color">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="quantity" formControlName="quantity">
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary m-3" (click)="addFormGroup()">Add Color</button>
+            <button type="button" class="btn btn-primary m-3" (click)="removeFormGroup()">Remove Color</button> 
+        </div> -->

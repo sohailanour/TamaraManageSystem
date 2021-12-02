@@ -1,0 +1,43 @@
+<app-adminnav></app-adminnav>
+
+<section class="container mt-5">
+    <div class="card w-50 m-auto mb-4" *ngIf="userData">
+        <div class="card-body">
+            <h4 class=" text-center">User Data Login </h4>
+            <p>Email : {{userData.email}}</p>
+            <p>Password : {{userData.password}}</p>
+        </div>
+    </div>
+    <form class="w-50 mx-auto" [formGroup]="RegisterForm" (ngSubmit)="handelRegister()">
+        <div class="mb-3">
+            <input placeholder="Enter your Email" class="form-control" formControlName="email">
+            <div class="my-3 alert alert-danger" *ngIf="email?.invalid && (email?.touched || isSubmited )">
+                <p>*Invalid Email </p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input type="password" placeholder="Enter your password" class="form-control" formControlName="password">
+            <div class="my-3 alert alert-danger" *ngIf="password?.invalid && (password?.dirty || isSubmited )">
+                <p>* Password is required </p>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <select class="form-select" formControlName="role" id="inputGroupSelect02">
+                <option value="Admin">Admin</option>
+                <option value="DataEntry">DataEntry</option>
+                <option value="Mandoub">Mandoub</option>
+            </select>
+        <!-- enum:["Admin", "DataEntry","Mandoub", "SAdmin"], -->
+        </div>
+        <div class="my-3 alert alert-danger d-block" *ngIf="role?.invalid && (role?.dirty || isSubmited )">
+            <p>* role is required </p>
+        </div>
+        <div class="alert alert-danger my-3" *ngIf="invalidData">
+            {{invalidData}}
+        </div>
+        
+        <div class="mb-3">
+            <button class="btn btn-primary">RegisterUser</button>
+        </div>
+    </form>
+</section>

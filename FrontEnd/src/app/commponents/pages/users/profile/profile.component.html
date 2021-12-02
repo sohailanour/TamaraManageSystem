@@ -1,0 +1,18 @@
+<section class=" text-capitalize container mt-5">
+    <h2 class="second-color  text-center">
+        <p class="main-color">Welcome to Tamara Staff </p>
+        {{_auth.userData.firstname}} {{_auth.userData.lastname}}
+    </h2>
+    <i class="my-5 d-block">
+        <p>Email : {{_auth.userData.email}}</p>
+        <p>Phone : {{_auth.userData.phone}}</p>
+        <p>Your Position : {{_auth.userData.role}}</p>
+    </i>
+
+    <div class="btn-group btn-group-lg text-center d-block " role="group" aria-label="Basic mixed styles example">
+        <button type="button" class="btn btn-success me-2"><a routerLink="/products">Show My Tasks</a></button>
+        <button type="button" class="btn btn-warning me-2"><a routerLink="/editprofile">Edit Profile</a></button>
+        <button type="button" class="btn btn-danger me-2"><a routerLink="/deleteacount">Delete Acount</a></button>
+    </div>
+
+</section>

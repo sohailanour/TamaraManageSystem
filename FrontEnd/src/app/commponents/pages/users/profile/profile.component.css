@@ -1,0 +1,12 @@
+p {
+  font-size: 24px;
+  color: rgb(81 78 73);
+}
+
+button {
+  transform: skew(-5deg);
+  -webkit-transform: skew(-5deg);
+  -moz-transform: skew(-5deg);
+  -ms-transform: skew(-5deg);
+  -o-transform: skew(-5deg);
+}

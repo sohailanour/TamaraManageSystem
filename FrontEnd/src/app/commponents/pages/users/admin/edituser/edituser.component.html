@@ -1,0 +1,44 @@
+<app-adminnav></app-adminnav>
+
+<section class="container mt-5">
+    <div class="card w-50 m-auto mb-4" *ngIf="staffData">
+        <div class="card-body">
+            <h4 class=" text-center">User Data Login </h4>
+            <p>Email : {{staffData.email}}</p>
+            <p *ngIf="staffData.password">NewPassword : {{staffData.password}}</p>
+            <p>Role : {{staffData.role}}</p>
+        </div>
+    </div>
+    <form class="w-50 mx-auto" [formGroup]="EditForm" (ngSubmit)="handelEdit()" *ngIf="!staffData">
+        <div class="mb-3">
+            <input placeholder="Enter your Email" class="form-control" formControlName="email">
+            <div class="my-3 alert alert-danger" *ngIf="email?.invalid && (email?.touched || isSubmited )">
+                <p>*Invalid Email </p>
+            </div>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" value="{{randomstring}}" class="form-control" placeholder="Enter New Password" aria-label="Recipient's username"
+                aria-describedby="button-addon2" *ngIf="randomstring">
+            <button class="btn btn-outline-danger ms-auto" type="button" id="button-addon2" (click)="generatePass()">Reset Password</button>
+        </div>
+         
+        <div class="input-group mb-3">
+            <select class="form-select" formControlName="role" id="inputGroupSelect02">
+                <option value="Admin">Admin</option>
+                <option value="DataEntry">DataEntry</option>
+                <option value="Mandoub">Mandoub</option>
+            </select>
+            <!-- enum:["Admin", "DataEntry","Mandoub", "SAdmin"], -->
+        </div>
+        <div class="my-3 alert alert-danger d-block" *ngIf="role?.invalid && (role?.dirty || isSubmited )">
+            <p>* role is required </p>
+        </div>
+        <div class="alert alert-danger my-3" *ngIf="invalidData">
+            {{invalidData}}
+        </div>
+
+        <div class="mb-3">
+            <button class="btn btn-primary">Edit User Data</button>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,96 @@
+<!-- customerId: {},
+code: {},
+request_date: {},
+from: { enum: ['Instagram', 'Facebook', 'whatsApp', 'Facebook Adds'] },
+products: [{productId: {},
+size: { enum: ['S', 'M', 'L', 'XL', 'XXL', 'XXXl'], type: String },
+color: {},
+status: { enum: ['Done', 'Recall', 'Cancel', 'Inprogress'], type: String, default: 'Inprogress' },
+quantity: { type: Number, default: 1 }}],
+notes: { type: String },
+shippingBy: { type: String },
+delivery_date: {type: Date}, -->
+
+<app-adminnav></app-adminnav>
+<!-- {{allorders|json}} -->
+<section class="container mt-4 ">
+    <button type="button" class="btn main-bg text-white ms-auto mb-5 d-block">
+        <a routerLink="/orders/registerorder">+ add new order</a>
+    </button>
+
+    <div class="table-responsive">
+        <table class="table text-capitalize table-bordered table-striped align-middle text-center ">
+            <thead>
+                <tr>
+                    <th scope="col" rowspan="2">code</th>
+                    <th scope="col" rowspan="2">customer Phone</th>
+                    <th scope="col" rowspan="2">request date</th>
+                    <th scope="col" rowspan="2">from</th>
+                    <th scope="col" colspan="5">products</th>
+                    <th scope="col" rowspan="2">delivery date</th>
+                    <th scope="col" rowspan="2">shippingBy</th>
+                    <th scope="col" rowspan="2">notes</th>
+                    <th scope="col" rowspan="2">Actions</th>
+                </tr>
+                <tr>
+                    <th class="col-w" scope="col">product name</th>
+                    <th class="col-w" scope="col">color</th>
+                    <th class="col-w" scope="col">size</th>
+                    <th class="col-w" scope="col">status</th>
+                    <th class="col-w" scope="col">quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+                <tr *ngFor="let order of allorders; index as i">
+                    <th scope="row">{{order.code}}</th>
+                    <td>{{order.customerId}}</td>
+                    <td>{{order.request_date}}</td>
+                    <td>{{order.from}}</td>
+                    <td>{{order.products[0].productId}}</td>
+                    <td>{{order.products[0].color}}</td>
+                    <td>{{order.products[0].size}}</td>
+                    <td>{{order.products[0].status}}</td>
+                    <td>{{order.products[0].quantity}}</td>
+                    <td>{{order.delivery_date}}</td>
+                    <td>{{order.shippingBy}}</td>
+                    <td>{{order.notes}}</td>
+                    <td>
+                        <div class="btn-group-vertical" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-success mb-2">Show</button>
+                            <!-- <button type="button" class="btn btn-warning mb-2"
+                                (click)="handelEdit(order)">Edit</button>
+                            <button type="button" class="btn btn-danger mb-2"
+                                (click)="handelDelete(order._id)">Delete</button> -->
+                        </div>
+                    </td>
+                </tr> 
+           
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- <td colspan="4">
+    <table class="table table-bordered text-center align-middle">
+        <tbody>
+            <tr *ngFor="let color of order.colors">
+                <td class="border-bottom-0 col-w">{{color.color}}</td>
+                <td class="border-bottom-0 col-w">{{color.quantity}}</td>
+                <td class="border-bottom-0 col-w">{{color.requests}}</td>
+                <td class="border-bottom-0 col-w">{{color.sold}}</td>
+            </tr>
+        </tbody>
+    </table>
+</td> -->
+
+<!-- <tr>
+    <td>
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </td>
+</tr> -->

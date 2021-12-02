@@ -1,0 +1,36 @@
+<app-adminnav></app-adminnav>
+
+<section class="container mt-5">
+    <button type="button" class="btn main-bg text-white ms-auto d-block">
+        <a routerLink="/staff/addnewuser">+ add new employee</a>
+    </button>
+
+    <div class="table-responsive mt-5 ">
+        <table class="table text-center">
+            <thead class=" ">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">role</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of allusers; index as i">
+                    <th>{{i+1}}</th>
+                    <td *ngIf="user.firstname else email">{{user.firstname}} {{user.lastname}}</td>
+                    <ng-template #email> <td>{{user.email}}</td> </ng-template>
+                    <td>{{user.phone}}</td>
+                    <td>{{user.role}}</td>
+                    <td>
+                        <div>
+                            <button type="button" class="btn text-white main-bg ms-2" (click)="edituser(user._id)">Edit User</button>
+                            <button type="button" class="btn btn-danger ms-2" (click)="deleteUser(user._id)">Delete Account</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

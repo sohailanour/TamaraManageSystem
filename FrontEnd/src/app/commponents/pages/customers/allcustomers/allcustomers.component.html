@@ -1,0 +1,56 @@
+<!-- table-responsive -->
+<!-- table-striped -->
+<!-- phones: [{phone: {}}],
+name: {},
+address: {city,area,details},
+numberoforders: {},
+rate: {} -->
+<app-adminnav></app-adminnav>
+<section class="container mt-4 ">
+    <button type="button" class="btn main-bg text-white ms-auto mb-5 d-block">
+        <a routerLink="/customers/registercustomer">+ add new customer</a>
+    </button>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle text-center ">
+            <thead>
+                <tr>
+                    <th scope="col" rowspan="2">#</th>
+                    <th scope="col" rowspan="2">customer name</th>
+                    <th scope="col" rowspan="2">phon1</th>
+                    <th scope="col" rowspan="2">phon2</th>
+                    <th scope="col" colspan="3">address</th>
+                    <th scope="col" rowspan="2">rate</th>
+                    <th scope="col" rowspan="2">Actions</th>
+                </tr>
+                <tr>
+                    <th class="col-w" scope="col">city</th>
+                    <th class="col-w" scope="col">area</th>
+                    <th class="col-w" scope="col">details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of allcustomers; index as i">
+                    <th scope="row">{{i}}</th>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.phones[0].phone}}</td>
+                    <td *ngIf="customer.phones[1] else empty">{{customer.phones[1].phone}}</td>
+                    <ng-template #empty><td></td></ng-template>
+                    <td>{{customer.address.city}}</td>
+                    <td>{{customer.address.area}}</td>
+                    <td>{{customer.address.details}}</td>
+                    <td>{{customer.rate}}</td>
+                    <td>
+                        <div class="btn-group-vertical" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-success mb-2">Show</button>
+                            <!-- <button type="button" class="btn btn-warning mb-2"
+                                (click)="handelEdit(customer)">Edit</button> -->
+                            <button type="button" class="btn btn-danger mb-2"
+                                (click)="handelDelete(customer._id)">Delete</button> 
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

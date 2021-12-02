@@ -1,0 +1,43 @@
+<section class="container my-5" >
+    <h3 class=" text-center text-capitalize">Please fill all data to active your account</h3>
+    <form class="mt-4" [formGroup]="EditForm" (ngSubmit)="handleForm()">
+        <div class="mb-3">
+            <input placeholder="Enter your First Name" class="form-control" formControlName="firstname">
+            <div class="my-3 alert alert-danger" *ngIf="firstname?.invalid && (firstname?.touched || isSubmited )">
+                <p>*Invalid name </p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input placeholder="Enter your Last Name" class="form-control" formControlName="lastname">
+            <div class="my-3 alert alert-danger" *ngIf="lastname?.invalid && (lastname?.touched || isSubmited )">
+                <p>*Invalid name </p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input value={{_auth.userData.email}} placeholder="Enter your Email" class="form-control" formControlName="email">
+            <div class="my-3 alert alert-danger" *ngIf="email?.invalid && (email?.touched || isSubmited )">
+                <p>*Invalid Email </p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input placeholder="Enter your Phone" class="form-control" formControlName="phone">
+            <div class="my-3 alert alert-danger" *ngIf="phone?.invalid && (phone?.touched || isSubmited )">
+                <p>*Invalid phone </p>
+            </div>
+        </div>
+        
+        <div class="mb-3">
+            <input type="password" placeholder="Enter your password" class="form-control" formControlName="password">
+            <div class="my-3 alert alert-danger" *ngIf="password?.invalid && (password?.dirty || isSubmited )">
+                <p>* Password is required </p>
+            </div>
+        </div>
+        <div class="alert alert-danger my-3" *ngIf="invalidData">
+            {{invalidData}}
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-primary">Confirm</button>
+        </div>
+
+    </form>
+</section>

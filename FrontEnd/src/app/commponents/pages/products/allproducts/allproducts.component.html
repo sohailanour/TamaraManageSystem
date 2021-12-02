@@ -1,0 +1,54 @@
+<!-- table-responsive -->
+<!-- table-striped -->
+<app-adminnav></app-adminnav>
+<section class="container mt-4 ">
+    <button type="button" class="btn main-bg text-white ms-auto mb-5 d-block">
+        <a routerLink="/products/registerproduct">+ add new product</a>
+    </button>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle text-center ">
+            <thead>
+                <tr>
+                    <th scope="col" rowspan="2">code</th>
+                    <th scope="col" rowspan="2">product name</th>
+                    <th scope="col" rowspan="2">season</th>
+                    <th scope="col" colspan="4">colors</th>
+                    <th scope="col" rowspan="2">Actions</th>
+                </tr>
+                <tr>
+                    <th class="col-w" scope="col">color</th>
+                    <th class="col-w" scope="col">quantity</th>
+                    <th class="col-w" scope="col">requests</th>
+                    <th class="col-w" scope="col">sold</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of allproducts; index as i">
+                    <th scope="row">{{product.code}}</th>
+                    <td>{{product.name}}</td>
+                    <td>{{product.season}}</td>
+                    <td colspan="4">
+                        <table class="table table-bordered text-center align-middle">
+                            <tbody>
+                                <tr *ngFor="let color of product.colors">
+                                    <td class="border-bottom-0 col-w">{{color.color}}</td>
+                                    <td class="border-bottom-0 col-w">{{color.quantity}}</td>
+                                    <td class="border-bottom-0 col-w">{{color.requests}}</td>
+                                    <td class="border-bottom-0 col-w">{{color.sold}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>
+                        <div class="btn-group-vertical" role="group" aria-label="Basic mixed styles example">
+                            <button type="button" class="btn btn-success mb-2">Show</button>
+                            <button type="button" class="btn btn-warning mb-2" (click)="handelEdit(product)">Edit</button>
+                            <button type="button" class="btn btn-danger mb-2"(click)="handelDelete(product._id)">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

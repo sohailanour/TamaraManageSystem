@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-dark main-bg" *ngIf="isLoaded">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/login">Navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse  navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" routerLink="/login">Home</a>
+                </li>
+                <span class="d-flex" *ngIf="_auth.isAuthed; else notAuthed">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/profile">{{_auth.userData.firstname}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="" (click)="logout()">logout</a>
+                    </li>
+                </span>
+                <ng-template #notAuthed>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/register">register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/login">Login</a>
+                    </li>
+                </ng-template>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" routerLink="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        products
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" routerLink="products">allproducts</a></li>
+        <li><a class="dropdown-item" routerLink="/products/registerproduct">add products</a></li>
+        <li><a class="dropdown-item" routerLink=""></a></li>
+    </ul>
+</li> -->

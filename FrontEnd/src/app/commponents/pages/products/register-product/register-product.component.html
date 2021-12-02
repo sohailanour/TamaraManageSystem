@@ -1,0 +1,32 @@
+<app-adminnav></app-adminnav>
+<section class="container my-4">
+    <form [formGroup]="myForm" (ngSubmit)="confirmData()">
+        <div class="mb-3">
+            <input class="form-control" placeholder="name" formControlName="name">
+            <div class="alert alert-danger" *ngIf='name?.invalid && (name?.touched || isSubmitted )'>
+                error {{name?.errors | json}}
+            </div>
+        </div>
+        <div class="mb-3">
+            <input class="form-control" placeholder="code" formControlName="code">
+        </div>
+        <div class="mb-3">
+            <input class="form-control" placeholder="season" formControlName="season">
+        </div>
+        <div formArrayName='colors'>
+            <div *ngFor="let colorData of colors.controls; index as i">
+                <div [formGroupName]='i'>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="color" formControlName="color">
+                    </div>
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="quantity" formControlName="quantity">
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary m-3" (click)="addFormGroup()">Add Color</button>
+            <button type="button" class="btn btn-primary m-3" (click)="removeFormGroup()">Remove Color</button>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</section>

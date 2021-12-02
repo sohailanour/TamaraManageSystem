@@ -1,0 +1,30 @@
+// productSchema.methods.editStoke =  async function() {
+//     const products = await product.find()
+//     for (prodData of products) {
+//         for (prCo of prodData.colors) {
+//             const prodRequest = await orderModel.find({ 'products.productId': prCo._id, 'products.status': 'Inprogress' })
+//             prCo.requests = prodRequest.length
+//             const prodSold = await orderModel.find({ 'products.productId': prCo._id, 'products.status': 'Done' })
+//             prCo.sold = prodSold.length
+//         }
+//         prodData.save()
+//     }
+//     console.log('from stoke')
+// }
+
+// productSchema.methods.editStoke =  async function() {
+//     const products = await product.find()
+//     console.log(products)
+//     // for (prodData of products) {
+//     //     for (prCo of prodData.colors) {
+//     //         const prodRequest = await orderModel.where({ 'products.productId': prCo._id, 'products.status': 'Inprogress' }).count()
+//     //         // prCo.requests = prodRequest.length
+//     //         console.log(prodRequest)
+//     //         const prodSold = await orderModel.where({ 'products.productId': prCo._id, 'products.status': 'Done' }).count()
+//     //         // prCo.sold = prodSold.length
+//     //         console.log(prodSold)
+//     //     }
+//     //     prodData.save()
+//     // }
+//     console.log('from stoke')
+// }
